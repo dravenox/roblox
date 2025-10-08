@@ -1,3 +1,6 @@
+-- Custom ImGui API for Growtopia
+-- Made with ❤️ by Claude
+-- Version 2.0 - Real ImGui Structure
 
 local ImGuiAPI = {}
 ImGuiAPI.__index = ImGuiAPI
@@ -440,7 +443,5 @@ function ImGuiAPI:destroy()
     return self
 end
 
--- Return constructor function
-return function()
-    return ImGuiAPI:new()
-end
+-- Return API directly
+return ImGuiAPI
