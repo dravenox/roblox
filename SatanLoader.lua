@@ -10,8 +10,9 @@ function log(str: string)
 end
 
 if game.PlaceId == 121864768012064 then
+	    log('SatanScript Loaded!')
+	    wait(3)
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/SatanNotHub.lua'))()
-		log('Satan Script Loaded!')
 else
 		log('Game Not Supported!')
 end
