@@ -82,7 +82,7 @@ spawn(function()
     end
     ScreenGui:Destroy()
     if game.PlaceId == 121864768012064 then
-    		log('SatanScript Is Currently Maintenance!')
+    		log('SatanScript Loaded Successfully!')
     		wait(3)
     		loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/SatanNotHub.lua'))()
     else 
