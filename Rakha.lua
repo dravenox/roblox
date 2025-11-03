@@ -157,6 +157,141 @@ eventSection2:Input({
 })
 
 window:SelectTab(1)
+window:SetToggleKey(Enum.KeyCode.S)
+task.spawn(function()
+    while task.wait(1) do
+        if autoBackPosEnabled and isAtEvent and eventStartTime > 0 then
+            local elapsedTime = (tick() - eventStartTime) / 60
+            if elapsedTime >= backPosDelay then
+                backToSavedPos()
+                log(true, 'SatanScript', 'Returned To Saved Position!')
+                eventStartTime = 0
+            end
+        end
+    end
+end)    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    hrp.CFrame = CFrame.new(EventPos, EventPos + EventFacing)
+    isAtEvent = true
+    eventStartTime = tick()
+end
+
+local function backToSavedPos()
+    if not savedCFrame then 
+        log(false, 'SatanScript', 'No Saved Position!')
+        return 
+    end
+    local char = player.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    hrp.CFrame = savedCFrame
+    isAtEvent = false
+end
+
+REDisplaySystemMessage.OnClientEvent:Connect(function(message)
+    if autoEventEnabled then
+        local lowerMsg = string.lower(message)
+        if string.find(lowerMsg, "[server]") and string.find(lowerMsg, "group fishing event") then
+            task.spawn(function()
+                task.wait(1)
+                teleportToEvent()
+                log(true, 'SatanScript', 'Teleported To Event!')
+            end)
+        end
+    end
+end)
+
+local window = wind:CreateWindow({
+    Title = "Auto Event",
+    Icon = "sparkles",
+    Author = "SatanScript",
+    Size = UDim2.fromOffset(320, 280),
+    Transparent = true,
+    Theme = "Dark",
+    Resizable = true,
+    SideBarWidth = 180,
+    BackgroundImageTransparency = 0.42,
+    HideSearchBar = true,
+    ScrollBarEnabled = false
+})
+
+local eventTab = window:Tab({ Title = 'Auto Event', Icon = 'sparkles', Locked = false })
+
+local eventSection1 = eventTab:Section({
+    Title = 'Event Settings',
+    Icon = 'zap',
+    Opened = true
+})
+
+eventSection1:Toggle({
+    Title = 'Auto Secret Event',
+    Icon = 'check',
+    type = 'Checkbox',
+    Default = false,
+    Callback = function(state)
+        autoEventEnabled = state
+        if state then
+            log(true, 'SatanScript', 'Auto Event Enabled!')
+        else
+            log(false, 'SatanScript', 'Auto Event Disabled!')
+        end
+    end
+})
+
+local eventSection2 = eventTab:Section({
+    Title = 'Position Manager',
+    Icon = 'map-pin',
+    Opened = true
+})
+
+eventSection2:Button({
+    Title = 'Save Current Position',
+    Locked = false,
+    Callback = function()
+        if saveCurrentPosition() then
+            log(true, 'SatanScript', 'Position Saved Successfully!')
+        else
+            log(false, 'SatanScript', 'Failed To Save Position!')
+        end
+    end
+})
+
+eventSection2:Toggle({
+    Title = 'Auto Back Current Position',
+    Desc = 'Auto Back After Event Time',
+    Icon = 'check',
+    type = 'Checkbox',
+    Default = false,
+    Callback = function(state)
+        autoBackPosEnabled = state
+        if state then
+            log(true, 'SatanScript', 'Auto Back Position Enabled!')
+        else
+            log(false, 'SatanScript', 'Auto Back Position Disabled!')
+        end
+    end
+})
+
+eventSection2:Input({
+    Title = "Back Position Delay",
+    Value = "4",
+    InputIcon = "clock",
+    Type = "Input",
+    Placeholder = "Minutes...",
+    Callback = function(input)
+        local num = tonumber(input)
+        if num and num > 0 then
+            backPosDelay = num
+            log(true, 'SatanScript', 'Delay Set To: ' .. num .. ' Minutes')
+        else
+            log(false, 'SatanScript', 'Invalid Number!')
+        end
+    end
+})
+
+window:SelectTab(1)
 
 task.spawn(function()
     while task.wait(1) do
