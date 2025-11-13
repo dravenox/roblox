@@ -84,7 +84,7 @@ spawn(function()
     if game.PlaceId == 121864768012064 then
     		log('SatanScript Loaded Successfully!')
     		wait(3)
-    		loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/OnlyDevFriend.lua'))()
+    		loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/SatanScriptV0.1.2.lua'))()
     else 
     		log('Game Not Supported!')
     end
