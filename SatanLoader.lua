@@ -82,10 +82,10 @@ spawn(function()
     end
     ScreenGui:Destroy()
     if game.PlaceId == 121864768012064 then
-    		log('SatanScript Loaded Successfully!')
+    		log('SatanScript Is Gone🙂')
     		wait(3)
-    		loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/SatanScriptV0.1.2.lua'))()
-    else 
+    		log('Uncontinued..., Thanks For Use My Script')
+    el
     		log('Game Not Supported!')
     end
 end)
