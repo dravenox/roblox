@@ -86,7 +86,7 @@ spawn(function()
     		wait(1.5)
     		log('Tapi Boong Yahahaha')
 			loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/v5.lua'))()
-    el
+		else
     		log('Game Not Supported!')
     end
 end)
