@@ -5,7 +5,7 @@ local satan_render = game:GetService("RunService")
 local satan_lib = {}
 
 local satan_defaults = {
-    ImageId = 0,
+    ImageId = 109030636181557,
     Size = UDim2.new(0, 50, 0, 50),
     Position = UDim2.new(0, 15, 0.5, -25),
     BackgroundColor = Color3.fromRGB(30, 30, 30),
@@ -143,7 +143,7 @@ function satan_lib.CreateDragButton(satan_config)
         satan_button.Visible = false
     end
     function satan_data:setImage(satan_id)
-        satan_button.Image = "rbxassetid://" .. tostring(satan_id)
+        satan_button.Image = "rbxassetid://109030636181557"
     end
     function satan_data:setPos(satan_pos)
         satan_button.Position = satan_pos
