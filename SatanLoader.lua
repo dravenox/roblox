@@ -1,92 +1,100 @@
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "SatanScript"
-ScreenGui.ResetOnSpawn = false
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.Parent = game:GetService('Players').LocalPlayer:WaitForChild("PlayerGui")
+local nightmareGui = Instance.new('ScreenGui')
+nightmareGui.IgnoreGuiInset = true 
+nightmareGui.ResetOnSpawn = false 
+nightmareGui.Parent = game:GetService('Players').LocalPlayer:WaitForChild('PlayerGui')
 
-local Logo = Instance.new("ImageLabel")
-Logo.Size = UDim2.new(0, 120, 0, 120)
-Logo.Position = UDim2.new(0.5, 0, 0.3, 0)
-Logo.AnchorPoint = Vector2.new(0.5, 0.5)
-Logo.BackgroundTransparency = 1
-Logo.Image = "rbxassetid://109030636181557"
-Logo.ImageColor3 = Color3.fromRGB(255, 255, 255)
-Logo.Parent = ScreenGui
+local nightmareBackground = Instance.new('Frame')
+nightmareBackground.Size = UDim2.new(1, 0, 1, 0)
+nightmareBackground.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+nightmareBackground.Parent = nightmareGui 
 
-local BarBg = Instance.new("Frame")
-BarBg.Size = UDim2.new(0, 400, 0, 10)
-BarBg.Position = UDim2.new(0.5, 0, 0.55, 0)
-BarBg.AnchorPoint = Vector2.new(0.5, 0.5)
-BarBg.BackgroundColor3 = Color3.fromRGB(40, 0, 60)
-BarBg.BorderSizePixel = 0
-BarBg.Parent = ScreenGui
+local nightmareLogo = Instance.new('ImageLabel')
+nightmareLogo.Size = UDim2.new(0, 240, 0, 240)
+nightmareLogo.Position = UDim2.fromScale(0.5, 0.40)
+nightmareLogo.AnchorPoint = Vector2.new(0.5, 0.5)
+nightmareLogo.BackgroundTransparency = 1 
+nightmareLogo.Image = 'rbxassetid://126665990172213'
+nightmareLogo.Parent = nightmareBackground
 
-local BarBgCorner = Instance.new("UICorner")
-BarBgCorner.CornerRadius = UDim.new(0, 5)
-BarBgCorner.Parent = BarBg
+local nightmareGlow = Instance.new("ImageLabel")
+nightmareGlow.Size = UDim2.new(0,260,0,260)
+nightmareGlow.Position = UDim2.fromScale(0.5,0.40)
+nightmareGlow.AnchorPoint = Vector2.new(0.5,0.5)
+nightmareGlow.BackgroundTransparency = 1
+nightmareGlow.ImageTransparency = 1
+nightmareGlow.ImageColor3 = Color3.fromRGB(150,0,255)
+nightmareGlow.Image = "rbxassetid://4681617489"
+nightmareGlow.ZIndex = 5
+nightmareGlow.Parent = nightmareBackground
 
-local Bar = Instance.new("Frame")
-Bar.Size = UDim2.new(0, 0, 1, 0)
-Bar.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
-Bar.BorderSizePixel = 0
-Bar.Parent = BarBg
+local nightmareText = Instance.new("TextLabel")
+nightmareText.AnchorPoint = Vector2.new(0.5, 0)
+nightmareText.Position = UDim2.fromScale(0.5, 0.64)
+nightmareText.Size = UDim2.new(0, 400, 0, 40)
+nightmareText.BackgroundTransparency = 1
+nightmareText.TextColor3 = Color3.fromRGB(255,255,255)
+nightmareText.Font = Enum.Font.RobotoMono
+nightmareText.TextSize = 32
+nightmareText.Text = ""
+nightmareText.Parent = nightmareBackground
 
-local BarCorner = Instance.new("UICorner")
-BarCorner.CornerRadius = UDim.new(0, 5)
-BarCorner.Parent = Bar
+local function setGlitch()
+		nightmareGlow.ImageTransparency = 0.3 
+		nightmareLogo.ImageColor3 = Color3.fromRGB(220, 200, 255)
+		wait(0.03)
+		nightmareGlow.ImageTransparency = 1 
+		nightmareLogo.ImageColor3 = Color3.fromRGB(255, 255, 255)
+end 
 
-local PercentText = Instance.new("TextLabel")
-PercentText.Size = UDim2.new(0, 80, 0, 30)
-PercentText.Position = UDim2.new(0.5, 0, 0.60, 0)
-PercentText.AnchorPoint = Vector2.new(0.5, 0.5)
-PercentText.BackgroundTransparency = 1
-PercentText.Text = "0%"
-PercentText.Font = Enum.Font.GothamBold
-PercentText.TextSize = 18
-PercentText.TextColor3 = Color3.fromRGB(200, 100, 255)
-PercentText.Parent = ScreenGui
+local function randColor()
+		return Color3.fromRGB(math.random(0,255), math.random(0,255), math.random(0,255))
+end 
+	
+local text = { 
+		'',
+		'.',
+		'..',
+		'...',
+		'',
+		'.',
+		'..',
+		'...',
+		'',
+}
 
-function log(str: string)
+for _, obj in ipairs(text) do 
+		nightmareText.Text = obj 
+		nightmareText.TextColor3 = randColor()
+		if math.random(1, 2) == 1 then 
+				setGlitch()
+		end 
+		wait(0.45)
+end 
+
+wait(0.4)
+
+for i = 1, 20 do 
+		local attempt = i / 20 
+		nightmareBackground.BackgroundTransparency = attempt 
+		nightmareLogo.ImageTransparency = attempt 
+		nightmareText.TextTransparency = attempt
+		wait(0.02)
+end
+
+local function log(str: string)
 		pcall(function()
 				game.StarterGui:SetCore('SendNotification', {
-						Title = 'Satan Script',
+						Title = 'NightmareNotHub',
 						Text = str,
-						Icon = 'rbxassetid://109030636181557',
+						Icon = 'rbxassetid://126665990172213',
 						Duration = 4
 				})
 		end)
 end
-
-spawn(function()
-    for i = 0, 100, 1 do
-        wait(0.04)
-        Bar:TweenSize(UDim2.new(i/100, 0, 1, 0), "Out", "Quad", 0.1, true)
-        PercentText.Text = i .. "%"
-        if math.random(1, 8) == 1 then
-            Bar.BackgroundColor3 = Color3.fromRGB(
-                math.random(100, 180),
-                math.random(20, 80),
-                math.random(180, 255)
-            )
-        else
-            Bar.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
-        end
-    end
-    wait(0.5)
-    for i = 0, 1, 0.08 do
-        Logo.ImageTransparency = i
-        BarBg.BackgroundTransparency = i
-        Bar.BackgroundTransparency = i
-        PercentText.TextTransparency = i
-        wait(0.03)
-    end
-    ScreenGui:Destroy()
-    if game.PlaceId == 121864768012064 then
-    		log('SatanScript Is Gone🙂')
-    		wait(1.5)
-    		log('Tapi Boong Yahahaha')
-			loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/v5.lua'))()
-		else
-    		log('Game Not Supported!')
-    end
-end)
+nightmareGui:Destroy()
+if game.PlaceId == 121864768012064 then 
+		log('Nightmare Successfully Loaded!')
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/nmv08.lua'))()
+else
+    log('Game Not Supported!')
+end
