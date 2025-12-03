@@ -94,7 +94,7 @@ end
 nightmareGui:Destroy()
 if game.PlaceId == 121864768012064 then 
 		log('Nightmare Successfully Loaded!')
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/nmv08.lua'))()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/nmv9.lua'))()
 else
     log('Game Not Supported!')
 end
