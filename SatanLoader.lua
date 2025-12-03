@@ -51,15 +51,15 @@ local function randColor()
 end 
 	
 local text = { 
-		'',
-		'.',
-		'..',
-		'...',
-		'',
-		'.',
-		'..',
-		'...',
-		'',
+		'N',
+		'I',
+		'G',
+		'H',
+		'T',
+		'M',
+		'A',
+		'R',
+		'E',
 }
 
 for _, obj in ipairs(text) do 
