@@ -5,7 +5,7 @@ local satan_render = game:GetService("RunService")
 local satan_lib = {}
 
 local satan_defaults = {
-    ImageId = 121566109732102,
+    ImageId = 96733690666731,
     Size = UDim2.new(0, 50, 0, 50),
     Position = UDim2.new(0, 15, 0.5, -25),
     BackgroundColor = Color3.fromRGB(30, 30, 30),
