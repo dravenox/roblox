@@ -13,7 +13,7 @@ nightmareLogo.Size = UDim2.new(0, 240, 0, 240)
 nightmareLogo.Position = UDim2.fromScale(0.5, 0.40)
 nightmareLogo.AnchorPoint = Vector2.new(0.5, 0.5)
 nightmareLogo.BackgroundTransparency = 1 
-nightmareLogo.Image = 'rbxassetid://126665990172213'
+nightmareLogo.Image = 'rbxassetid://96733690666731'
 nightmareLogo.Parent = nightmareBackground
 
 local nightmareGlow = Instance.new("ImageLabel")
