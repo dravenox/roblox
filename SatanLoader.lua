@@ -137,6 +137,8 @@ if game.PlaceId == 121864768012064 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/Lunix.lua'))()
 elseif game.PlaceId == 101953168527257 then 
     loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/spear.lua'))()
-else
+elseif game.PlaceId == 129954712878723 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/dravenox/roblox/refs/heads/main/gag.lua'))()
+else 
     log('Game Not Supported!')
 end
